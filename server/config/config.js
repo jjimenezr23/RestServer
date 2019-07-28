@@ -10,15 +10,36 @@ process.env.PORT = process.env.PORT || 3000;
 // Expire of the token
 //======================================
 
-Process.env.EXPIRE_TOKEN = 60 * 60 * 24 * 30;
+process.env.EXPIRETOKEN = 60 * 60 * 24 * 30;
 
 
 // =====================================
 //Seed of athi
 //======================================
 
-Process.env.SEED = Process.env.EXPIRE_TOKEN || 'secret-este-es-el-seed-desarrollo';
+process.env.SEED = process.env.SEED || 'secret-este-es-el-seed-desarrollo';
+
+
+
+
+// =====================================
+//Desarrollo
+//======================================
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
 // =====================================
 //base de Datos
 //======================================
+
+let urlDB;
+
+if (process.env.NODE_ENV === 'dev') {
+
+    urlDB = 'mongodb://localhost:27017/cafe'
+} else {
+    urlDB = 'mongodb+srv://macachon:IPTUv4VdaaneLfIG@cluster0-ycjdm.mongodb.net/cliente'
+}
+
+
+process.env.URLDB = urlDB;

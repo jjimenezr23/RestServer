@@ -19,7 +19,7 @@ app.use(require('./router/index'));
 
 
 
-mongoose.connect('mongodb://localhost:27017/cafe', {
+mongoose.connect(process.env.URLDB, {
     useNewUrlParser: true,
     useCreateIndex: true
 }, (err, res) => {

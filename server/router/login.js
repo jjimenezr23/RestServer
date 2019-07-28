@@ -1,4 +1,5 @@
 const express = require("express");
+require('../config/config');
 const User = require('../model/user');
 const bcrypt = require("bcrypt");
 const _ = require('underscore');
@@ -46,7 +47,7 @@ app.post("/login", (req, res) => {
 
         let token = jwt.sign({
             user: userDB
-        }, 'secret-este-es-el-seed-desarrollo', { expiresIn: Process.env.EXPIRE_TOKEN });
+        }, Process.env.SEED, { expiresIn: Process.env.EXPIRETOKEN });
         res.json({
             ok: true,
             user: userDB,
