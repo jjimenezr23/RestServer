@@ -3,7 +3,7 @@ require('../config/config');
 const User = require('../model/user');
 const bcrypt = require("bcrypt");
 const _ = require('underscore');
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const app = express();
 
 app.post("/login", (req, res) => {
@@ -47,7 +47,7 @@ app.post("/login", (req, res) => {
 
         let token = jwt.sign({
             user: userDB
-        }, Process.env.SEED, { expiresIn: Process.env.EXPIRETOKEN });
+        }, process.env.SEED, { expiresIn: process.env.EXPIRETOKEN });
         res.json({
             ok: true,
             user: userDB,
