@@ -5,16 +5,23 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const path = require('path');
 
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
+
+//habilita el public
+app.use(express.static(path.resolve(__dirname, '../public')));
+//express HBS
+//app.set('view engine', 'hbs');
 
 // parse application/json
 app.use(bodyParser.json())
 
 //global confi router
 app.use(require('./router/index'));
+
 
 
 
